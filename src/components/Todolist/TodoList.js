@@ -6,13 +6,13 @@ function TodoList ({todo, setTodo}) {
     const [value, setValue] = useState("")
 
     function deleteTodo(id) {
-        let newTodo = [...todo].filter(item => item.id != id)
+        let newTodo = [...todo].filter(item => item.id !== id)
         setTodo(newTodo)
     }
 
     function statusTodo(id) {
         let newTodo = [...todo].filter(item => {
-            if(item.id == id) {
+            if(item.id === id) {
                 item.status = !item.status
             }
             return item
@@ -26,8 +26,8 @@ function TodoList ({todo, setTodo}) {
     }
 
     function saveTodo(id) {
-        let newTodo = [... todo].map(item => {
-            if (item.id == id) {
+        let newTodo = [...todo].map(item => {
+            if (item.id === id) {
                 item.title = value
             }
             return item
@@ -42,7 +42,7 @@ function TodoList ({todo, setTodo}) {
                 todo.map( item => (
                     <div key = {item.id}>
                         {
-                            edit == item.id ? 
+                            edit === item.id ? 
                                 <div>
                                     <input value = {value} onChange = {(e) => setValue(e.target.value)} />
                                 </div> :
@@ -50,7 +50,7 @@ function TodoList ({todo, setTodo}) {
                         }
                         
                         {
-                            edit == item.id ? 
+                            edit === item.id ? 
                                 <div>
                                     <button onClick={() => saveTodo(item.id)}>Сохранить</button>
                                 </div> :
